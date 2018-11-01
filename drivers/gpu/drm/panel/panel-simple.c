@@ -2239,6 +2239,34 @@ static const struct panel_desc_dsi auo_b101uan01 = {
 	.format = MIPI_DSI_FMT_RGB888,
 	.lanes = 4,
 };
+static const struct drm_display_mode aaware_microtips_mode = {
+	.clock = 30160,
+	.hdisplay = 480,
+	.hsync_start = 480 + 197,
+	.hsync_end = 480 + 197,
+	.htotal = 480 + 197 + 197,
+	.vdisplay = 800,
+	.vsync_start = 800 + 20,
+	.vsync_end = 800 + 2 + 20,
+	.vtotal = 800 + 20 + 2 + 20,
+	.vrefresh = 60,
+};
+
+static const struct panel_desc_dsi aaware_microtips = {
+	.desc = {
+		.modes = &aaware_microtips_mode,
+		.num_modes = 1,
+		.bpc = 8,
+		.size = {
+			.width = 86,
+			.height = 51,
+		},
+	},
+	.flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE,
+	.format = MIPI_DSI_FMT_RGB888,
+	.lanes = 2,
+};
+
 
 static const struct drm_display_mode boe_tv080wum_nl0_mode = {
 	.clock = 160000,
@@ -2355,6 +2383,33 @@ static const struct panel_desc_dsi panasonic_vvx10f004b00 = {
 	.lanes = 4,
 };
 
+static const struct display_timing aaware_innolux_g101ice_l01_timing = {
+	.pixelclock = { 60400000, 71100000, 74700000 },
+	.hactive = { 480, 480, 480 },
+	.hfront_porch = { 60, 60, 60 },
+	.hback_porch = { 60, 60, 60 },
+	.hsync_len = { 10, 10, 10 },
+	.vactive = { 800, 800, 800 },
+	.vfront_porch = { 20, 20, 20 },
+	.vback_porch = { 20, 20, 20 },
+	.vsync_len = { 2, 2, 2 },
+	.flags = DISPLAY_FLAGS_DE_HIGH,
+};
+
+static const struct panel_desc aaware_innolux_g101ice_l01 = {
+	.timings = &aaware_innolux_g101ice_l01_timing,
+	.num_timings = 1,
+	.bpc = 8,
+	.size = {
+		.width = 217,
+		.height = 135,
+	},
+	.delay = {
+		.enable = 200,
+		.disable = 200,
+	},
+	.bus_format = MEDIA_BUS_FMT_RGB888_1X7X4_SPWG,
+};
 static const struct of_device_id dsi_of_match[] = {
 	{
 		.compatible = "auo,b080uan01",
@@ -2362,6 +2417,12 @@ static const struct of_device_id dsi_of_match[] = {
 	}, {
 		.compatible = "auo,b101uan01",
 		.data = &auo_b101uan01
+	}, {
+		.compatible = "aaware,microtips1",
+		.data = &aaware_microtips
+	}, {
+		.compatible = "aaware,microtips2",
+		.data = &aaware_innolux_g101ice_l01,
 	}, {
 		.compatible = "boe,tv080wum-nl0",
 		.data = &boe_tv080wum_nl0
