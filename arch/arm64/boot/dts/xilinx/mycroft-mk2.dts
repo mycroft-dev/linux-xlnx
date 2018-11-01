@@ -1584,7 +1584,7 @@
 			xlnx,s-axi-ctrl-addr-width = <0x7>;
 			xlnx,s-axi-ctrl-data-width = <0x20>;
 			reset-gpios = <0x36 0x52 0x1>;
-			xlnx,vid-formats = "bgr888";
+			xlnx,vid-formats = "rgb888";
 			xlnx,pixels-per-clock = <0x1>;
 			xlnx,dma-addr-width = <0x40>;
 			clock-names = "axis";
