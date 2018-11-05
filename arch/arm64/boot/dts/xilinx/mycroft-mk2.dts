@@ -1590,6 +1590,8 @@
 			clock-names = "axis";
 			clocks = <0x37>;
 			#dma-cells = <0x1>;
+			xlnx,max-height = <0x320>;
+			xlnx,max-width = <0x190>;
 			linux,phandle = <0x38>;
 			phandle = <0x38>;
 		};
@@ -1613,7 +1615,7 @@
 			compatible = "xlnx,pl-disp";
 			dmas = <0x38 0x0>;
 			dma-names = "dma0";
-			xlnx,vformat = "BG24";
+			xlnx,vformat = "RG24";
 
 			port@0 {
 				reg = <0x0>;
